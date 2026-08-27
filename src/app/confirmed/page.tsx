@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PinCard from "../components/PinCard";
 import StatusPill from "../components/StatusPill";
+import roomadeMark from "../lib/roomade-mark.png";
 
 export const metadata: Metadata = {
   title: "You're confirmed | Roomade",
@@ -16,7 +18,16 @@ export default function ConfirmedPage() {
         style={{ "--tilt": "-1.5deg" } as React.CSSProperties}
       >
         <PinCard tilt="-1.5deg" pinColor="bg-sage" className="p-8 text-center">
-          <StatusPill color="bg-sage text-paper">CONFIRMED</StatusPill>
+          <Image
+            src={roomadeMark}
+            alt=""
+            width={80}
+            height={80}
+            className="mx-auto"
+          />
+          <div className="mt-3">
+            <StatusPill color="bg-sage text-paper">CONFIRMED</StatusPill>
+          </div>
           <p className="mt-4 font-[family-name:var(--font-marker)] text-4xl leading-tight text-ink">
             You&apos;re signed up.
           </p>
@@ -28,7 +39,7 @@ export default function ConfirmedPage() {
 
       <Link
         href="/"
-        className="mt-12 font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wide text-paper/80 underline decoration-paper/40 underline-offset-4 hover:text-paper"
+        className="mt-12 font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wide text-paper/95 underline decoration-paper/40 underline-offset-4 hover:text-paper"
       >
         Back to Roomade
       </Link>
