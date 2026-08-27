@@ -29,37 +29,39 @@ const faqs = [
 
 export default function Faq() {
   return (
-    <section className="w-full max-w-2xl px-6 py-20">
-      <RevealOnScroll className="text-center">
-        <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/70">
-          FAQ
-        </p>
-        <h2 className="mx-auto mt-3 font-[family-name:var(--font-marker)] text-3xl leading-tight text-paper sm:text-4xl">
-          Questions people actually ask
-        </h2>
-      </RevealOnScroll>
+    <section className="cork-tile--dark w-full px-6 py-20">
+      <div className="mx-auto w-full max-w-2xl">
+        <RevealOnScroll className="text-center">
+          <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/95">
+            FAQ
+          </p>
+          <h2 className="mx-auto mt-3 font-[family-name:var(--font-marker)] text-3xl leading-tight text-paper sm:text-4xl">
+            Questions people actually ask
+          </h2>
+        </RevealOnScroll>
 
-      <div className="paper-panel mt-12 rounded-sm divide-y divide-dashed divide-ink/15">
-        {faqs.map((item, i) => (
-          <RevealOnScroll key={item.q} delay={`${i * 60}ms`}>
-            <details className="faq-item group p-5 sm:p-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm outline-none [&::-webkit-details-marker]:hidden focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
-                <span className="font-[family-name:var(--font-marker)] text-xl text-ink">
-                  {item.q}
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="faq-marker shrink-0 text-2xl leading-none text-coral"
-                >
-                  +
-                </span>
-              </summary>
-              <p className="faq-content mt-2 text-sm leading-relaxed text-ink/70">
-                {item.a}
-              </p>
-            </details>
-          </RevealOnScroll>
-        ))}
+        <div className="paper-panel mt-12 rounded-sm divide-y divide-dashed divide-ink/15">
+          {faqs.map((item, i) => (
+            <RevealOnScroll key={item.q} delay={`${i * 60}ms`}>
+              <details className="faq-item group p-5 sm:p-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm outline-none [&::-webkit-details-marker]:hidden focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
+                  <span className="font-[family-name:var(--font-marker)] text-xl text-ink">
+                    {item.q}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="faq-marker shrink-0 text-2xl leading-none text-coral"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="faq-content mt-2 text-sm leading-relaxed text-ink/70">
+                  {item.a}
+                </p>
+              </details>
+            </RevealOnScroll>
+          ))}
+        </div>
       </div>
     </section>
   );

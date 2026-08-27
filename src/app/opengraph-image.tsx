@@ -4,7 +4,7 @@ export const alt = "Roomade — the board for your flat";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const CORK = "#b08d57";
+const CORK = "#9c7c49";
 const PAPER = "#f7f1e6";
 const INK = "#2b2420";
 const CORAL = "#e15a3e";

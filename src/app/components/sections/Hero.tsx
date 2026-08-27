@@ -44,7 +44,7 @@ const cards = [
 export default function Hero() {
   return (
     <div className="w-full max-w-5xl px-6 pt-20 pb-24 sm:pt-28">
-      <p className="pin-drop text-center font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/80">
+      <p className="pin-drop text-center font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/95">
         Shared-flat coordination
       </p>
       <h1
@@ -54,7 +54,7 @@ export default function Hero() {
         Whatever&apos;s happening in your flat, it&apos;s on the board.
       </h1>
       <p
-        className="pin-drop mx-auto mt-5 max-w-md text-center text-base text-paper/90"
+        className="pin-drop mx-auto mt-5 max-w-md text-center text-base text-paper/95"
         style={{ animationDelay: "100ms" }}
       >
         Roomade turns the group chat into a board: issues to fix, money to

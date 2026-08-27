@@ -9,16 +9,16 @@ const balances = [
 
 export default function SettleUp() {
   return (
-    <section className="w-full max-w-4xl px-6 py-20">
-      <div className="flex flex-col items-center gap-10 sm:flex-row sm:items-center sm:justify-center sm:gap-16">
+    <section className="cork-tile--dark w-full px-6 py-20">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-10 sm:flex-row sm:items-center sm:justify-center sm:gap-16">
         <RevealOnScroll className="max-w-sm text-center sm:text-left">
-          <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/70">
+          <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/95">
             Settle up
           </p>
           <h2 className="mt-3 font-[family-name:var(--font-marker)] text-3xl leading-tight text-paper sm:text-4xl">
             One net balance per person, not a pile of receipts.
           </h2>
-          <p className="mt-4 text-base leading-7 text-paper/85">
+          <p className="mt-4 text-base leading-7 text-paper/95">
             Every Spend card feeds one running total per household member.
             Mark your share paid when you&apos;ve actually paid it. Roomade
             tracks who owes what, it doesn&apos;t move the money for you.

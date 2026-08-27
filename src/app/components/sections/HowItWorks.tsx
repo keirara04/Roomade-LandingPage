@@ -22,7 +22,7 @@ export default function HowItWorks() {
   return (
     <section className="w-full max-w-4xl px-6 py-20">
       <RevealOnScroll className="text-center">
-        <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/70">
+        <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/95">
           Getting started
         </p>
         <h2 className="mx-auto mt-3 max-w-md font-[family-name:var(--font-marker)] text-3xl leading-tight text-paper sm:text-4xl">
