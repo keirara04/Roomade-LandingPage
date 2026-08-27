@@ -1,8 +1,16 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const alt = "Roomade — the board for your flat";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+const markData = await readFile(
+  join(process.cwd(), "src/app/lib/roomade-mark.png"),
+  "base64",
+);
+const markSrc = `data:image/png;base64,${markData}`;
 
 const CORK = "#9c7c49";
 const PAPER = "#f7f1e6";
@@ -89,17 +97,20 @@ export default function Image() {
           padding: "60px 80px",
         }}
       >
-        <span
-          style={{
-            fontSize: 20,
-            fontWeight: 700,
-            letterSpacing: 6,
-            textTransform: "uppercase",
-            color: `${PAPER}cc`,
-          }}
-        >
-          Shared-flat coordination
-        </span>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <img src={markSrc} width={48} height={48} alt="" />
+          <span
+            style={{
+              fontSize: 20,
+              fontWeight: 700,
+              letterSpacing: 6,
+              textTransform: "uppercase",
+              color: `${PAPER}cc`,
+            }}
+          >
+            Shared-flat coordination
+          </span>
+        </div>
         <span
           style={{
             marginTop: 18,
