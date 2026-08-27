@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function WaitlistForm() {
+  const emailId = useId();
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -29,7 +30,7 @@ export default function WaitlistForm() {
 
   if (status === "success") {
     return (
-      <p className="font-[family-name:var(--font-marker)] text-2xl text-sage">
+      <p className="pin-drop font-[family-name:var(--font-marker)] text-2xl text-sage">
         Pinned. We&apos;ll be in touch.
       </p>
     );
@@ -41,17 +42,17 @@ export default function WaitlistForm() {
         onSubmit={handleSubmit}
         className="flex w-full items-end gap-3 border-b-2 border-dashed border-ink/25 pb-1"
       >
-        <label htmlFor="waitlist-email" className="sr-only">
+        <label htmlFor={emailId} className="sr-only">
           Email address
         </label>
         <input
-          id="waitlist-email"
+          id={emailId}
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="min-w-0 flex-1 bg-transparent py-1 text-center text-sm text-ink outline-none placeholder:text-ink/40"
+          className="min-w-0 flex-1 rounded-sm bg-transparent py-1 text-center text-sm text-ink outline-none placeholder:text-ink/40 focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
         />
         <input
           type="text"
@@ -66,7 +67,7 @@ export default function WaitlistForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="shrink-0 rounded-sm bg-ink px-4 py-1.5 font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wide text-paper transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="shrink-0 rounded-sm bg-ink px-4 py-1.5 font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wide text-paper outline-none transition-[opacity,transform] duration-150 hover:opacity-90 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 motion-reduce:hover:scale-100 motion-reduce:active:scale-100 focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
         >
           {status === "loading" ? "Pinning…" : "Join"}
         </button>

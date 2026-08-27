@@ -7,6 +7,7 @@ import ScopeAndRoadmap from "./components/sections/ScopeAndRoadmap";
 import SecondCta from "./components/sections/SecondCta";
 import Faq from "./components/sections/Faq";
 import Footer from "./components/sections/Footer";
+import StickyWaitlistBar from "./components/StickyWaitlistBar";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <SecondCta />
       <Faq />
       <Footer />
+      <StickyWaitlistBar watchSelector="#hero-waitlist" hideSelector="#site-footer" />
     </div>
   );
 }

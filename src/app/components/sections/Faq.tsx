@@ -40,15 +40,25 @@ export default function Faq() {
       </RevealOnScroll>
 
       <div className="paper-panel mt-12 rounded-sm divide-y divide-dashed divide-ink/15">
-        {faqs.map((item) => (
-          <div key={item.q} className="p-5 sm:p-6">
-            <p className="font-[family-name:var(--font-marker)] text-xl text-ink">
-              {item.q}
-            </p>
-            <p className="mt-1 text-sm leading-relaxed text-ink/70">
-              {item.a}
-            </p>
-          </div>
+        {faqs.map((item, i) => (
+          <RevealOnScroll key={item.q} delay={`${i * 60}ms`}>
+            <details className="faq-item group p-5 sm:p-6">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm outline-none [&::-webkit-details-marker]:hidden focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
+                <span className="font-[family-name:var(--font-marker)] text-xl text-ink">
+                  {item.q}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="faq-marker shrink-0 text-2xl leading-none text-coral"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="faq-content mt-2 text-sm leading-relaxed text-ink/70">
+                {item.a}
+              </p>
+            </details>
+          </RevealOnScroll>
         ))}
       </div>
     </section>

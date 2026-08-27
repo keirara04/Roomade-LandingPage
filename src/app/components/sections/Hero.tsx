@@ -95,6 +95,7 @@ export default function Hero() {
       </div>
 
       <div
+        id="hero-waitlist"
         className="pin-drop relative mx-auto mt-20 w-full max-w-sm"
         style={{ "--tilt": "-1.5deg", "--delay": "320ms" } as React.CSSProperties}
       >

@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Caveat, Space_Mono } from "next/font/google";
+import { SITE_URL } from "./lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,7 +20,6 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
-const SITE_URL = "https://roomademy.org";
 const title = "Roomade | the board for your flat";
 const description =
   "Issues, spends, and heads-ups for your shared flat, all pinned to one board. Join the waitlist.";
@@ -42,6 +42,11 @@ export const metadata: Metadata = {
     title,
     description,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#b08d57",
+  colorScheme: "light",
 };
 
 const jsonLd = {
