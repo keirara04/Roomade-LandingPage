@@ -6,6 +6,7 @@ type Status = "idle" | "loading" | "success" | "error";
 
 export default function WaitlistForm() {
   const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -16,7 +17,7 @@ export default function WaitlistForm() {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, company }),
       });
 
       if (!res.ok) throw new Error();
@@ -40,13 +41,27 @@ export default function WaitlistForm() {
         onSubmit={handleSubmit}
         className="flex w-full items-end gap-3 border-b-2 border-dashed border-ink/25 pb-1"
       >
+        <label htmlFor="waitlist-email" className="sr-only">
+          Email address
+        </label>
         <input
+          id="waitlist-email"
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
           className="min-w-0 flex-1 bg-transparent py-1 text-center text-sm text-ink outline-none placeholder:text-ink/40"
+        />
+        <input
+          type="text"
+          name="company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute h-0 w-0 opacity-0"
         />
         <button
           type="submit"
@@ -56,9 +71,9 @@ export default function WaitlistForm() {
           {status === "loading" ? "Pinning…" : "Join"}
         </button>
       </form>
-      {status === "error" && (
-        <p className="text-sm text-coral">Something went wrong. Try again.</p>
-      )}
+      <p role="status" aria-live="polite" className="text-sm text-coral">
+        {status === "error" ? "Something went wrong. Try again." : ""}
+      </p>
     </div>
   );
 }
