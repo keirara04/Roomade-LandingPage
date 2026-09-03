@@ -3,11 +3,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # Reuses the same file `next dev` already reads, so there's one place
-    # to set SUPABASE_URL / SUPABASE_PUBLISHABLE_KEY instead of also needing
-    # a `.env` (the filename Compose auto-loads) or exported shell vars.
-    env_file:
-      - .env.local
+    # `.env.local` is gitignored on purpose (it holds real secrets) and so
+    # never exists in a fresh clone — pointing env_file at it broke deploy
+    # platforms (Dokploy) that clone the repo fresh and inject these values
+    # as real environment variables instead. ${VAR} substitution reads from
+    # whatever already injected the vars into the environment (locally:
+    # export them yourself, or run compose with --env-file .env.local).
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_PUBLISHABLE_KEY=${SUPABASE_PUBLISHABLE_KEY}
     ports:
       - "3000:3000"
     restart: unless-stopped
