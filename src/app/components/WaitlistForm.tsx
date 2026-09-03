@@ -30,18 +30,15 @@ export default function WaitlistForm() {
 
   if (status === "success") {
     return (
-      <p className="pin-drop font-[family-name:var(--font-marker)] text-2xl text-sage">
-        Pinned. We&apos;ll be in touch.
+      <p className="font-display text-xl font-bold text-navy">
+        You&apos;re on the list. We&apos;ll email you.
       </p>
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <form
-        onSubmit={handleSubmit}
-        className="flex w-full items-end gap-3 border-b-2 border-dashed border-ink/25 pb-1"
-      >
+    <div className="flex w-full flex-col gap-2">
+      <form onSubmit={handleSubmit} className="flex w-full flex-col gap-2 sm:flex-row">
         <label htmlFor={emailId} className="sr-only">
           Email address
         </label>
@@ -52,8 +49,9 @@ export default function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="min-w-0 flex-1 rounded-sm bg-transparent py-1 text-center text-sm text-ink outline-none placeholder:text-ink/40 focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+          className="min-w-0 flex-1 rounded-[14px] bg-surface-sunken px-4 py-3 text-base text-ink outline-none placeholder:text-ink/60 focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
         />
+        {/* Honeypot. Bots fill it, people never see it. */}
         <input
           type="text"
           name="company"
@@ -67,13 +65,13 @@ export default function WaitlistForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="shrink-0 rounded-sm bg-ink px-4 py-1.5 font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wide text-paper outline-none transition-[opacity,transform] duration-150 hover:opacity-90 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 motion-reduce:hover:scale-100 motion-reduce:active:scale-100 focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+          className="shrink-0 rounded-[14px] bg-navy px-6 py-3 font-display text-base font-bold text-white outline-none transition-[background-color,transform] duration-150 hover:bg-navy-lift active:scale-[0.98] disabled:opacity-60 motion-reduce:active:scale-100 focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
         >
-          {status === "loading" ? "Pinning…" : "Join"}
+          {status === "loading" ? "Joining…" : "Join the waitlist"}
         </button>
       </form>
-      <p role="status" aria-live="polite" className="text-sm text-coral">
-        {status === "error" ? "Something went wrong. Try again." : ""}
+      <p role="status" aria-live="polite" className="min-h-5 text-sm text-danger">
+        {status === "error" ? "Something went wrong. Try that again." : ""}
       </p>
     </div>
   );

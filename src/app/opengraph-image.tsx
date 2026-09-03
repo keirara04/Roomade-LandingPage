@@ -2,75 +2,37 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Roomade — the board for your flat";
+export const alt = "Roomade: everything your house needs, in one place";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const markData = await readFile(
-  join(process.cwd(), "src/app/lib/roomade-mark.png"),
-  "base64",
-);
-const markSrc = `data:image/png;base64,${markData}`;
+const iconData = await readFile(join(process.cwd(), "public/icon-512.png"), "base64");
+const iconSrc = `data:image/png;base64,${iconData}`;
 
-const CORK = "#9c7c49";
-const PAPER = "#f7f1e6";
-const INK = "#2b2420";
-const CORAL = "#e15a3e";
-const SAGE = "#6e9c7d";
-const BUTTER = "#f4c744";
+const TEAL = "#3a7071";
+const CREAM = "#fddfb5";
+const WHITE = "#ffffff";
+const INK = "#141c19";
+const NAVY = "#1e3a5f";
 
-function Card({
-  rotate,
-  pin,
-  label,
-  title,
-}: {
-  rotate: number;
-  pin: string;
-  label: string;
-  title: string;
-}) {
+function Card({ label, title }: { label: string; title: string }) {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        background: PAPER,
-        borderRadius: 6,
-        padding: "20px 22px",
+        background: WHITE,
+        borderRadius: 20,
+        padding: "20px 24px",
         width: 260,
-        transform: `rotate(${rotate}deg)`,
-        boxShadow: "0 14px 24px rgba(43,36,32,0.4)",
-        position: "relative",
+        boxShadow: "0 18px 34px rgba(0,0,0,0.32)",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: -10,
-          left: "50%",
-          marginLeft: -8,
-          width: 16,
-          height: 16,
-          borderRadius: 999,
-          background: pin,
-        }}
-      />
+      <span style={{ fontSize: 17, fontWeight: 700, color: NAVY }}>{label}</span>
       <span
         style={{
-          fontSize: 15,
-          fontWeight: 700,
-          letterSpacing: 2,
-          textTransform: "uppercase",
-          color: `${INK}80`,
-        }}
-      >
-        {label}
-      </span>
-      <span
-        style={{
-          marginTop: 10,
-          fontSize: 26,
+          marginTop: 8,
+          fontSize: 25,
           fontWeight: 700,
           color: INK,
           lineHeight: 1.15,
@@ -93,40 +55,33 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: CORK,
+          background: TEAL,
           padding: "60px 80px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <img src={markSrc} width={48} height={48} alt="" />
-          <span
-            style={{
-              fontSize: 20,
-              fontWeight: 700,
-              letterSpacing: 6,
-              textTransform: "uppercase",
-              color: `${PAPER}cc`,
-            }}
-          >
-            Shared-flat coordination
+        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+          <img src={iconSrc} width={64} height={64} alt="" style={{ borderRadius: 18 }} />
+          <span style={{ fontSize: 24, fontWeight: 700, color: CREAM }}>
+            Roomade
           </span>
         </div>
         <span
           style={{
-            marginTop: 18,
-            fontSize: 56,
-            fontWeight: 700,
-            color: PAPER,
+            marginTop: 24,
+            fontSize: 62,
+            fontWeight: 800,
+            color: WHITE,
             textAlign: "center",
-            lineHeight: 1.15,
+            lineHeight: 1.1,
+            letterSpacing: -1.5,
           }}
         >
-          Whatever&apos;s happening in your flat, it&apos;s on the board.
+          Everything your house needs, in one place.
         </span>
-        <div style={{ display: "flex", gap: 40, marginTop: 56 }}>
-          <Card rotate={-4} pin={CORAL} label="Issue" title="Kitchen tap won't stop dripping" />
-          <Card rotate={3} pin={SAGE} label="Spend" title="Costco run: $86.40" />
-          <Card rotate={-2} pin={BUTTER} label="Heads-Up" title="Sam's parents staying" />
+        <div style={{ display: "flex", gap: 32, marginTop: 54 }}>
+          <Card label="Board" title="What still needs doing" />
+          <Card label="Settle up" title="You pay, or you get back" />
+          <Card label="Chat" title="Right next to all of it" />
         </div>
       </div>
     ),

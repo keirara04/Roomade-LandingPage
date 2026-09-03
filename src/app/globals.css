@@ -1,203 +1,284 @@
 @import "tailwindcss";
 
+/* Brand tokens. Source of truth is the iOS app: colours sampled from the app
+   icon (public/icon-512.png) and Core/Theme.swift's AccentColor. The site and
+   the app are one product, so a colour only belongs here if it exists there. */
 :root {
-  --cork: #9c7c49;
-  --cork-dark: #7d6235;
-  --paper: #f7f1e6;
-  --paper-dim: #efe6d4;
-  --ink: #2b2420;
-  --coral: #e15a3e;
-  --sage: #6e9c7d;
-  --butter: #f4c744;
+  --teal: #3a7071;
+  --teal-deep: #2c5657;
+  --coral: #ec6747;
+  --coral-deep: #e45d40;
+  --cream: #fddfb5;
+  /* Brand cream is 4.33:1 on --teal. Fine as a fill or at display size, but
+     it fails AA as small text, and the section eyebrow labels are small text.
+     This tint measures 4.76:1 on --teal and 6.9:1 on --teal-deep. Use --cream
+     for fills and the mascot; use this anywhere cream becomes a word. */
+  --cream-text: #ffebc8;
+  --navy: #1e3a5f;
+  --navy-lift: #2b5183;
+  --ink: #141c19;
+  --surface: #ffffff;
+  --surface-sunken: #f2f2f7;
+  /* The app uses system green (#34C759) on an iOS surface. On the web that is
+     2.3:1 against white, so unreadable as text. Darkened to clear AA (5.4:1).
+     Direction of money must never rely on colour anyway; see the app's brand
+     guide. Wording carries it, this only reinforces. */
+  --money-in: #1f7a38;
+  /* Genuine failures only. The app reserves red for exactly that. Money
+     going out is a normal state and is never red anywhere on this site. */
+  --danger: #a83318;
 
-  --background: var(--paper);
-  --foreground: var(--ink);
+  --background: var(--teal);
+  --foreground: var(--surface);
 }
 
 @theme inline {
-  --color-cork: var(--cork);
-  --color-paper: var(--paper);
-  --color-ink: var(--ink);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
   --color-coral: var(--coral);
-  --color-sage: var(--sage);
-  --color-butter: var(--butter);
+  --color-coral-deep: var(--coral-deep);
+  --color-cream: var(--cream);
+  --color-cream-text: var(--cream-text);
+  --color-navy: var(--navy);
+  --color-navy-lift: var(--navy-lift);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-money-in: var(--money-in);
+  --color-danger: var(--danger);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
-  --font-marker: var(--font-marker);
-  --font-label: var(--font-label);
+  /* --font-display is deliberately NOT registered here. Tailwind would
+     generate its own .font-display utility from it and collide with the
+     Apple-first stack defined below. */
 }
 
-body {
-  background: var(--paper);
-  color: var(--foreground);
-  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+/* Anchor targets clear the fixed header. Without this the heading (or the
+   hero waitlist panel, from the header's own "Join waitlist" CTA) a visitor
+   just clicked toward lands underneath the bar. */
+[id="board"],
+[id="money"],
+[id="chat"],
+[id="faq"],
+[id="hero-waitlist"] {
+  scroll-margin-top: 4.5rem;
 }
 
-/* Corkboard surface: layered radial dots for cork grain, plus a vignette
-   and diagonal sheen so the board reads as lit, physical material rather
-   than a flat fill. */
-.corkboard {
-  background-color: var(--cork);
-  background-image:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 45%),
-    radial-gradient(ellipse at center, transparent 45%, rgba(43, 36, 32, 0.2) 100%),
-    radial-gradient(rgba(43, 36, 32, 0.14) 1px, transparent 1.4px),
-    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1.4px);
-  background-size: 100% 100%, 100% 100%, 9px 9px, 13px 13px;
-  background-position: 0 0, 0 0, 0 0, 4px 6px;
-  background-repeat: no-repeat, no-repeat, repeat, repeat;
-}
-
-/* Alternating cork tile: same grain, a darker tone (never lighter, since
-   text-paper labels sit directly on this background and contrast is
-   already tight against --cork), with a seam where it meets the previous
-   panel so the board reads as several mounted panels, not one flat strip. */
-.cork-tile--dark {
-  background-color: var(--cork-dark);
-  background-image:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 45%),
-    radial-gradient(ellipse at center, transparent 45%, rgba(43, 36, 32, 0.2) 100%),
-    radial-gradient(rgba(43, 36, 32, 0.14) 1px, transparent 1.4px),
-    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1.4px);
-  background-size: 100% 100%, 100% 100%, 9px 9px, 13px 13px;
-  background-position: 0 0, 0 0, 0 0, 4px 6px;
-  background-repeat: no-repeat, no-repeat, repeat, repeat;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 3px 6px -3px rgba(43, 36, 32, 0.35);
-}
-
-/* Pinned index card: paper texture, hard drop shadow, sits at a fixed tilt */
-.pin-card {
-  background: var(--paper);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 10px 18px -8px rgba(43, 36, 32, 0.45);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.pin-card:hover {
-  transform: translateY(-4px) rotate(0deg) !important;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 16px 24px -10px rgba(43, 36, 32, 0.5);
-}
-
-.pushpin {
-  position: absolute;
-  top: -0.6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1rem;
-  height: 1rem;
-  border-radius: 9999px;
-  box-shadow:
-    0 2px 3px rgba(0, 0, 0, 0.4),
-    inset 0 -2px 2px rgba(0, 0, 0, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.5);
-}
-
-.washi-tape {
-  position: absolute;
-  height: 1.4rem;
-  width: 3.25rem;
-  opacity: 0.75;
-  box-shadow: 0 1px 2px rgba(43, 36, 32, 0.2);
-}
-
-@keyframes pin-drop {
-  from {
-    opacity: 0;
-    transform: translateY(-28px) rotate(0deg) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) rotate(var(--tilt, 0deg)) scale(1);
-  }
-}
-
-.pin-drop {
-  animation: pin-drop 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  animation-delay: var(--delay, 0ms);
+html {
+  scroll-behavior: smooth;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pin-drop {
-    animation: none;
-    transform: rotate(var(--tilt, 0deg));
-  }
-  .pin-card:hover {
-    transform: rotate(var(--tilt, 0deg)) !important;
+  html {
+    scroll-behavior: auto;
   }
 }
 
-/* Flat paper panel: for text-heavy sections that don't need a pin */
-.paper-panel {
-  background: var(--paper);
+body {
+  background: var(--teal);
+  color: var(--foreground);
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Apple devices get real SF Pro for display type; everything else falls back
+   to Inter Tight, which is the closest web match to the app's heavy titles. */
+.font-display {
+  font-family: -apple-system, BlinkMacSystemFont, var(--font-display),
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Surfaces */
+
+/* White card. Replaces the old pinned index card: no tilt, no pushpin, soft
+   diffuse shadow only, since the app has no hard offset shadows anywhere. */
+.panel {
+  background: var(--surface);
+  border-radius: 20px;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 8px 16px -10px rgba(43, 36, 32, 0.4);
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 8px 24px -12px rgba(20, 28, 25, 0.45);
 }
 
-/* Scroll-triggered reveal: mirrors .pin-drop but gated on visibility, not mount */
+/* Sunken grouped-list backdrop, matching iOS systemGroupedBackground behind
+   the app's inset-grouped rows. */
+.panel-sunken {
+  background: var(--surface-sunken);
+  border-radius: 16px;
+}
+
+/* Section ground alternation. Both are dark enough for white body text
+   (white on --teal is 5.55:1, on --teal-deep higher still). */
+.ground {
+  background: var(--teal);
+}
+
+.ground-deep {
+  position: relative;
+  /* Establishes its own stacking context so ShapeScatter's negative
+     z-index stays scoped here instead of escaping to a distant ancestor
+     and painting behind something unrelated. */
+  z-index: 0;
+  background: var(--teal-deep);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 12px 24px -20px rgba(0, 0, 0, 0.5);
+}
+
+/* Phone frame */
+
+/* Screenshot bezel. Yaw and pitch come in as inline custom properties from
+   PhoneFrame, which is why they are a fixed resting angle rather than
+   something a stylesheet rule animates: an inline custom property outranks
+   any selector, so a `.reveal.is-visible .phone-frame { --phone-yaw: 0 }`
+   rule would never win. Change the angle at the call site. */
+.phone-frame {
+  position: relative;
+  border-radius: 42px;
+  padding: 8px;
+  background: linear-gradient(160deg, #ffffff 0%, #dfe3e6 55%, #b9c0c5 100%);
+  box-shadow:
+    0 2px 1px rgba(255, 255, 255, 0.7) inset,
+    0 30px 60px -30px rgba(0, 0, 0, 0.65),
+    0 10px 24px -14px rgba(0, 0, 0, 0.5);
+  transform: perspective(1400px) rotateY(var(--phone-yaw, 0deg))
+    rotateX(var(--phone-pitch, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* No CSS notch here on purpose: the screenshots are real device captures and
+   already contain the Dynamic Island. Drawing one would double it. */
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-frame {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Mascot */
+
+/* Two transforms that must not fight each other, so they live on two
+   elements: the wrapper carries the pointer tilt, the image inside carries
+   the float. Putting an animation and a transform on one element means the
+   animation wins and the tilt is silently discarded. */
+.mascot {
+  transform: rotate(var(--mascot-tilt, 0deg))
+    translateY(var(--mascot-shift, 0px));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+/* Deliberately no shadow. The icon's own background is #3A7171 and the page
+   ground is #3A7071, so on the hero the square edge is invisible and the
+   character reads as a free-floating cutout. A drop shadow would draw the
+   square back in and undo that. Everywhere else the icon appears (the second
+   CTA, the footer, the sticky bar) it sits on white and carries its own
+   shadow from the call site. */
+.mascot-icon {
+  animation: mascot-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes mascot-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascot {
+    transform: none;
+    transition: none;
+  }
+  .mascot-icon {
+    animation: none;
+  }
+}
+
+/* Motion */
+
 .reveal {
   opacity: 0;
-  transform: translateY(24px) rotate(var(--tilt, 0deg)) scale(0.97);
+  transform: translateY(20px);
   transition:
     opacity 0.5s ease,
-    transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
   transition-delay: var(--delay, 0ms);
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0) rotate(var(--tilt, 0deg)) scale(1);
+  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
-    transform: rotate(var(--tilt, 0deg));
+    transform: none;
     transition: none;
   }
 }
 
-/* FAQ accordion: bouncy pin-marker rotation + paper-flutter open animation */
+/* Hero entrance: rises into place rather than dropping like a pinned card. */
+@keyframes lift-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lift-in {
+  animation: lift-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lift-in {
+    animation: none;
+  }
+}
+
+/* FAQ accordion */
+
 .faq-marker {
   display: inline-block;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .faq-item[open] .faq-marker {
-  transform: rotate(45deg) scale(1.15);
+  transform: rotate(45deg);
 }
 
-@keyframes faq-flutter {
-  0% {
+@keyframes faq-open {
+  from {
     opacity: 0;
-    transform: translateY(-8px) rotate(-1deg);
+    transform: translateY(-6px);
   }
-  60% {
+  to {
     opacity: 1;
-    transform: translateY(1px) rotate(0.4deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0);
   }
 }
 
 .faq-item[open] > .faq-content {
-  animation: faq-flutter 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: faq-open 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .faq-marker {
     transition: none;
-  }
-  .faq-item[open] .faq-marker {
-    transform: rotate(45deg);
   }
   .faq-item[open] > .faq-content {
     animation: none;

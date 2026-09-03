@@ -1,23 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
-import roomadeMark from "../../lib/roomade-mark.png";
+import ShapeScatter from "../ShapeScatter";
+import icon from "../../../../public/icon-512.png";
 
 export default function Footer() {
   return (
-    <footer id="site-footer" className="w-full border-t border-paper/15 px-6 py-8">
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-3 text-center text-sm text-paper/95 sm:flex-row sm:justify-between sm:text-left">
-        <p className="flex items-center gap-2 font-[family-name:var(--font-label)] tracking-wide">
-          <Image src={roomadeMark} alt="" width={20} height={20} />
+    <footer
+      id="site-footer"
+      className="ground-deep w-full border-t border-white/10 px-6 py-10"
+    >
+      <ShapeScatter opacity={0.07} />
+      <div className="mx-auto flex w-full max-w-6xl xl:max-w-7xl flex-col items-center gap-4 text-center text-sm text-white/85 sm:flex-row sm:justify-between sm:text-left">
+        <p className="flex items-center gap-2.5 font-semibold">
+          <Image src={icon} alt="" width={26} height={26} className="rounded-[28%]" />
           Roomade &copy; {new Date().getFullYear()}
         </p>
-        <div className="flex items-center gap-4">
-          <Link href="/privacy" className="transition-colors hover:text-paper">
+        <div className="flex flex-wrap items-center justify-center gap-5">
+          <Link href="/privacy" className="transition-colors hover:text-white">
             Privacy
           </Link>
-          <Link href="/terms" className="transition-colors hover:text-paper">
+          <Link href="/terms" className="transition-colors hover:text-white">
             Terms
           </Link>
-          <a href="mailto:roomadeofficialmy@gmail.com" className="transition-colors hover:text-paper">
+          <a
+            href="mailto:roomadeofficialmy@gmail.com"
+            className="transition-colors hover:text-white"
+          >
             roomadeofficialmy@gmail.com
           </a>
         </div>

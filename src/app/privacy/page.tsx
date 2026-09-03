@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 function H2({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mt-8 font-[family-name:var(--font-marker)] text-2xl text-ink first:mt-0">
+    <h2 className="font-display mt-9 text-2xl font-extrabold text-ink first:mt-0">
       {children}
     </h2>
   );
@@ -15,7 +15,7 @@ function H2({ children }: { children: React.ReactNode }) {
 
 function H3({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="mt-5 font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wide text-coral">
+    <h3 className="font-display mt-5 text-sm font-bold text-navy">
       {children}
     </h3>
   );
@@ -27,12 +27,12 @@ function P({ children }: { children: React.ReactNode }) {
 
 export default function PrivacyPage() {
   return (
-    <div className="corkboard flex flex-1 justify-center px-6 py-20">
-      <div className="paper-panel w-full max-w-2xl rounded-sm p-8 text-sm text-ink/85 sm:p-10">
-        <h1 className="font-[family-name:var(--font-marker)] text-4xl text-ink">
+    <div className="flex flex-1 justify-center bg-teal px-6 py-20">
+      <div className="panel w-full max-w-2xl p-8 text-sm leading-relaxed text-ink/85 sm:p-10">
+        <h1 className="font-display text-4xl font-extrabold text-ink">
           Privacy Policy
         </h1>
-        <p className="mt-1 text-xs text-ink/50">
+        <p className="mt-1 text-xs text-ink/65">
           Last updated August 27, 2026. Applies to this waitlist site only.
         </p>
 

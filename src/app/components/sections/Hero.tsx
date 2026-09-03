@@ -1,114 +1,94 @@
 import WaitlistForm from "../WaitlistForm";
-import PinCard from "../PinCard";
-import StatusPill from "../StatusPill";
-
-const cards = [
-  {
-    kind: "Issue",
-    pin: "bg-coral",
-    tape: "bg-coral/30",
-    tilt: "-4deg",
-    delay: "0ms",
-    title: "Kitchen tap won't stop dripping",
-    body: "Been going since Tuesday, driving Priya up the wall.",
-    status: "OPEN",
-    statusColor: "bg-coral text-paper",
-    foot: "claimed by Priya",
-  },
-  {
-    kind: "Spend",
-    pin: "bg-sage",
-    tape: "bg-sage/30",
-    tilt: "3deg",
-    delay: "120ms",
-    title: "Costco run: $86.40",
-    body: "Split four ways. Toilet paper, oat milk, the good coffee.",
-    status: "3/4 PAID",
-    statusColor: "bg-sage text-paper",
-    foot: "you owe $21.60",
-  },
-  {
-    kind: "Heads-Up",
-    pin: "bg-butter",
-    tape: "bg-butter/40",
-    tilt: "-2deg",
-    delay: "240ms",
-    title: "Sam's parents staying this weekend",
-    body: "Arriving Friday night, gone by Sunday lunch.",
-    status: "SEEN · 2/3",
-    statusColor: "bg-ink text-paper",
-    foot: "posted by Sam",
-  },
-];
+import PhoneFrame from "../PhoneFrame";
+import Panel from "../Panel";
+import Mascot from "../Mascot";
+import RotatingPhrase from "../RotatingPhrase";
+import ShapeScatter from "../ShapeScatter";
+import boardShot from "../../../../public/Board.png";
 
 export default function Hero() {
   return (
-    <div className="w-full max-w-5xl px-6 pt-20 pb-24 sm:pt-28">
-      <p className="pin-drop text-center font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/95">
-        Shared-flat coordination
-      </p>
-      <h1
-        className="pin-drop mx-auto mt-3 max-w-2xl text-center font-[family-name:var(--font-marker)] text-4xl leading-[1.05] text-paper drop-shadow-[0_2px_2px_rgba(43,36,32,0.35)] sm:text-6xl"
-        style={{ animationDelay: "60ms" }}
-      >
-        Whatever&apos;s happening in your flat, it&apos;s on the board.
-      </h1>
-      <p
-        className="pin-drop mx-auto mt-5 max-w-md text-center text-base text-paper/95"
-        style={{ animationDelay: "100ms" }}
-      >
-        Roomade turns the group chat into a board: issues to fix, money to
-        split, and things people need to know, pinned, not buried.
-      </p>
+    <section className="relative z-0 w-full px-6 pt-16 pb-24 sm:pt-24">
+      <ShapeScatter opacity={0.18} />
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 xl:max-w-7xl lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+        <div className="text-center lg:text-left">
+          <p className="lift-in text-sm font-semibold tracking-wide text-cream-text">
+            For shared houses
+          </p>
 
-      <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-3 sm:gap-y-0">
-        {cards.map((card) => (
-          <div
-            key={card.kind}
-            className="pin-drop relative"
-            style={
-              { "--tilt": card.tilt, "--delay": card.delay } as React.CSSProperties
-            }
+          <h1
+            className="lift-in font-display mt-4 text-4xl font-extrabold leading-[1.05] text-white sm:text-6xl"
+            style={{ "--delay": "60ms" } as React.CSSProperties}
           >
-            <PinCard
-              tilt={card.tilt}
-              pinColor={card.pin}
-              tapeColor={card.tape}
-              className="mx-auto w-full max-w-[15rem] p-5"
-            >
-              <p className="font-[family-name:var(--font-label)] text-[0.65rem] font-bold uppercase tracking-widest text-ink/50">
-                {card.kind}
-              </p>
-              <h3 className="mt-2 font-[family-name:var(--font-marker)] text-2xl leading-tight text-ink">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm leading-snug text-ink/70">
-                {card.body}
-              </p>
-              <div className="mt-4 flex items-center justify-between gap-2">
-                <StatusPill color={card.statusColor}>{card.status}</StatusPill>
-                <span className="text-[0.7rem] text-ink/50">{card.foot}</span>
-              </div>
-            </PinCard>
-          </div>
-        ))}
-      </div>
+            Everything your house needs,{" "}
+            <span className="text-cream-text">in one place</span>.
+          </h1>
 
-      <div
-        id="hero-waitlist"
-        className="pin-drop relative mx-auto mt-20 w-full max-w-sm"
-        style={{ "--tilt": "-1.5deg", "--delay": "320ms" } as React.CSSProperties}
-      >
-        <PinCard tilt="-1.5deg" className="p-6 text-center">
-          <p className="font-[family-name:var(--font-marker)] text-3xl text-ink">
-            Get on the board
+          <div
+            className="lift-in mx-auto mt-5 max-w-lg lg:mx-0"
+            style={{ "--delay": "120ms" } as React.CSSProperties}
+          >
+            <RotatingPhrase />
+          </div>
+
+          <p
+            className="lift-in mx-auto mt-4 max-w-lg text-lg leading-relaxed text-white/90 lg:mx-0"
+            style={{ "--delay": "150ms" } as React.CSSProperties}
+          >
+            What needs fixing, who paid for what, what&apos;s happening this
+            week, and the group chat that goes with it. One board your whole
+            house can see.
           </p>
-          <p className="mt-1 mb-5 text-sm text-ink/70">
-            We&apos;ll email you when Roomade opens up.
-          </p>
-          <WaitlistForm />
-        </PinCard>
+
+          <div
+            id="hero-waitlist"
+            className="lift-in mt-10"
+            style={{ "--delay": "180ms" } as React.CSSProperties}
+          >
+            <Panel className="mx-auto max-w-lg p-6 lg:mx-0">
+              <p className="font-display text-xl font-bold">
+                Get early access
+              </p>
+              <p className="mt-1 mb-5 text-sm text-ink/70">
+                Roomade is on iPhone, in early access. Leave your email and
+                we&apos;ll let you in.
+              </p>
+              <WaitlistForm />
+            </Panel>
+          </div>
+        </div>
+
+        {/* The app icon sits on the phone's lower-left corner, in front of it,
+            so the two read as one scene rather than two stickers. */}
+        <div className="relative flex items-center justify-center pb-16 sm:pb-20">
+          <div
+            className="lift-in relative z-10"
+            style={{ "--delay": "240ms" } as React.CSSProperties}
+          >
+            <PhoneFrame
+              src={boardShot}
+              alt="The Roomade board, showing a personal greeting, counts for heads-ups, reminders and settlements, and the cards underneath."
+              className="w-[16rem] sm:w-[19rem]"
+              yaw="-9deg"
+              pitch="3deg"
+              eager
+              sizes="(max-width: 640px) 70vw, 19rem"
+            />
+          </div>
+
+          {/* Behind the phone, not in front of it. As a square the icon covers
+              whatever it overlaps, so sitting on top meant hiding the board
+              rows and the tab bar the screenshot exists to show. Tucked behind
+              the corner it peeks out instead, which is what the character was
+              always doing.
+
+              Kept inside the column too: the page clips overflow-x, so a
+              negative left offset here disappears entirely at desktop widths. */}
+          <div className="absolute bottom-0 left-0 z-0 w-[9rem] sm:w-[13rem]">
+            <Mascot />
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

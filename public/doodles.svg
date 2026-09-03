@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none">
+  <!-- x-mark -->
+  <g stroke="#ffffff" stroke-width="4" stroke-linecap="round">
+    <line x1="34" y1="46" x2="58" y2="70" />
+    <line x1="58" y1="46" x2="34" y2="70" />
+  </g>
+
+  <!-- outlined circle -->
+  <circle cx="238" cy="52" r="22" stroke="#ffffff" stroke-width="4" />
+
+  <!-- outlined triangle -->
+  <path
+    d="M148 132 L172 178 L124 178 Z"
+    stroke="#ffffff"
+    stroke-width="4"
+    stroke-linejoin="round"
+  />
+
+  <!-- small rotated square -->
+  <rect
+    x="308"
+    y="130"
+    width="34"
+    height="34"
+    stroke="#ffffff"
+    stroke-width="4"
+    transform="rotate(18 325 147)"
+  />
+
+  <!-- wavy squiggle -->
+  <path
+    d="M20 240 Q 40 220, 60 240 T 100 240 T 140 240"
+    stroke="#ffffff"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <!-- short dash -->
+  <line
+    x1="200"
+    y1="248"
+    x2="236"
+    y2="248"
+    stroke="#ffffff"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <!-- second, smaller x-mark -->
+  <g stroke="#ffffff" stroke-width="3.5" stroke-linecap="round">
+    <line x1="292" y1="238" x2="308" y2="254" />
+    <line x1="308" y1="238" x2="292" y2="254" />
+  </g>
+
+  <!-- small circle -->
+  <circle cx="70" cy="320" r="13" stroke="#ffffff" stroke-width="3.5" />
+
+  <!-- outlined triangle, smaller, rotated -->
+  <path
+    d="M258 300 L280 336 L236 336 Z"
+    stroke="#ffffff"
+    stroke-width="3.5"
+    stroke-linejoin="round"
+    transform="rotate(-12 258 318)"
+  />
+
+  <!-- second wavy squiggle -->
+  <path
+    d="M320 330 Q 336 314, 352 330 T 384 330"
+    stroke="#ffffff"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  />
+
+  <!-- lone short dash -->
+  <line
+    x1="150"
+    y1="30"
+    x2="178"
+    y2="30"
+    stroke="#ffffff"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  />
+
+  <!-- small square, rotated -->
+  <rect
+    x="150"
+    y="356"
+    width="22"
+    height="22"
+    stroke="#ffffff"
+    stroke-width="3.5"
+    transform="rotate(-15 161 367)"
+  />
+</svg>

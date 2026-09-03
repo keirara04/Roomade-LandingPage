@@ -1,101 +1,126 @@
-import PinCard from "../PinCard";
-import StatusPill from "../StatusPill";
+import Panel from "../Panel";
+import Chip from "../Chip";
+import PhoneFrame from "../PhoneFrame";
 import RevealOnScroll from "../RevealOnScroll";
+import boardShot from "../../../../public/Board.png";
 
 const types = [
   {
-    kind: "Issue / Need",
-    pin: "bg-coral",
-    tape: "bg-coral/30",
-    tilt: "-2deg",
-    accent: "text-coral",
+    kind: "Issue or need",
+    dot: "bg-[#f0873f]",
     blurb:
-      "Something to fix or buy. One person claims it, and it's resolved when it's done. Reopen it if it isn't, really.",
-    flow: ["OPEN", "CLAIMED", "RESOLVED"],
-    flowColor: "bg-coral text-paper",
+      "Something to fix, or something to buy. Claim it, resolve it, reopen it if it isn't done. Add photos so nobody has to ask which tap.",
+    flow: ["Open", "Claimed", "Resolved"],
   },
   {
     kind: "Spend",
-    pin: "bg-sage",
-    tape: "bg-sage/30",
-    tilt: "2deg",
-    accent: "text-sage",
+    dot: "bg-money-in",
     blurb:
-      "A shared expense, split equally. Everyone's share is tracked paid or unpaid, individually, so no more guessing who still owes for Costco.",
-    flow: ["PENDING SETTLEMENT", "SETTLED"],
-    flowColor: "bg-sage text-paper",
+      "A shared cost. Everyone's share is tracked separately, so you can see who has settled and who hasn't without asking anyone.",
+    flow: ["To settle", "Settled"],
   },
   {
-    kind: "Heads-Up",
-    pin: "bg-butter",
-    tape: "bg-butter/40",
-    tilt: "-2deg",
-    accent: "text-ink",
+    kind: "Heads-up",
+    dot: "bg-[#a349c4]",
     blurb:
-      "A text announcement, like “guest staying overnight,” that kind of thing. No resolve workflow, just an acknowledgement so you know it's been seen.",
-    flow: ["POSTED", "EXPIRED"],
-    flowColor: "bg-ink text-paper",
+      "“My parents are staying this weekend.” No workflow, nothing to resolve. Just an acknowledgement so you know everyone has actually seen it.",
+    flow: ["Posted", "Seen"],
+  },
+  {
+    kind: "Reminder",
+    dot: "bg-[#5b5bd6]",
+    blurb:
+      "A heads-up with a date on it. Invite whoever needs to be there. It gets its own section on the board and its own day in the calendar.",
+    flow: ["Dated", "In the calendar"],
   },
 ];
 
 export default function CardTypes() {
   return (
-    <section className="w-full max-w-4xl px-6 py-20">
+    <section id="board" className="w-full max-w-6xl px-6 py-24 xl:max-w-7xl">
       <RevealOnScroll className="text-center">
-        <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/95">
+        <p className="text-sm font-semibold tracking-wide text-cream-text">
           The board
         </p>
-        <h2 className="mx-auto mt-3 max-w-lg font-[family-name:var(--font-marker)] text-3xl leading-tight text-paper sm:text-4xl">
-          Three kinds of card. That&apos;s the whole system.
+        <h2 className="font-display mx-auto mt-3 max-w-3xl text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+          <span className="text-cream-text">Three</span> things to post.{" "}
+          <span className="text-cream-text">Four</span> kinds of card.
         </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
+          Post an issue, a spend, or a heads-up. Put a date on a heads-up and
+          it becomes a reminder. Same card, its own section.
+        </p>
       </RevealOnScroll>
 
-      <div className="mt-14 flex flex-col gap-10">
-        {types.map((type, i) => (
-          <RevealOnScroll
-            key={type.kind}
-            tilt={type.tilt}
-            delay={`${i * 100}ms`}
-          >
-            <PinCard
-              tilt={type.tilt}
-              pinColor={type.pin}
-              tapeColor={type.tape}
-              className="mx-auto w-full max-w-2xl p-6 sm:p-8"
-            >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div className="sm:max-w-sm">
-                  <h3
-                    className={`font-[family-name:var(--font-marker)] text-2xl ${type.accent}`}
-                  >
-                    {type.kind}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/75">
-                    {type.blurb}
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-2 sm:justify-end">
-                  {type.flow.map((step, j) => (
-                    <span key={step} className="flex items-center gap-2">
-                      <StatusPill
-                        color={
-                          j === type.flow.length - 1
-                            ? type.flowColor
-                            : "bg-ink/10 text-ink/60"
-                        }
-                      >
-                        {step}
-                      </StatusPill>
-                      {j < type.flow.length - 1 && (
-                        <span className="text-ink/30">→</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </PinCard>
+      <div className="mt-16 grid grid-cols-1 items-start gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <RevealOnScroll className="flex justify-center lg:sticky lg:top-16">
+          <PhoneFrame
+            src={boardShot}
+            alt="The board opens with a greeting, a line saying three payments are awaiting settlement, and tappable counts for heads-ups, reminders and settlements."
+            className="w-[15rem] sm:w-[17rem]"
+            yaw="8deg"
+            pitch="2deg"
+            sizes="(max-width: 640px) 62vw, 17rem"
+          />
+        </RevealOnScroll>
+
+        <div className="flex flex-col gap-5">
+          <RevealOnScroll>
+            <Panel className="p-6 sm:p-7">
+              <Chip tone="bg-navy/10 text-navy">Opens to this</Chip>
+              <h3 className="font-display mt-3 text-xl font-bold">
+                One line telling you if anything needs you
+              </h3>
+              <p className="mt-2 leading-relaxed text-ink/75">
+                Not a wall of numbers. The board leads with what&apos;s yours,
+                then what&apos;s waiting on a housemate, then money to
+                settle &mdash; or says &ldquo;all clear.&rdquo; Tap a count to
+                jump to that section.
+              </p>
+            </Panel>
           </RevealOnScroll>
-        ))}
+
+          {types.map((type, i) => (
+            <RevealOnScroll key={type.kind} delay={`${i * 60}ms`}>
+              <Panel className="p-6 sm:p-7">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="sm:max-w-sm">
+                    <h3 className="font-display flex items-center gap-2.5 text-xl font-bold">
+                      <span
+                        aria-hidden="true"
+                        className={`h-2.5 w-2.5 rounded-full ${type.dot}`}
+                      />
+                      {type.kind}
+                    </h3>
+                    <p className="mt-2 leading-relaxed text-ink/75">
+                      {type.blurb}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-1.5 sm:justify-end">
+                    {type.flow.map((step, j) => (
+                      <span key={step} className="flex items-center gap-1.5">
+                        <Chip
+                          tone={
+                            j === type.flow.length - 1
+                              ? "bg-navy text-white"
+                              : "bg-ink/8 text-ink/70"
+                          }
+                        >
+                          {step}
+                        </Chip>
+                        {j < type.flow.length - 1 && (
+                          <span aria-hidden="true" className="text-ink/30">
+                            ›
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Panel>
+            </RevealOnScroll>
+          ))}
+        </div>
       </div>
     </section>
   );

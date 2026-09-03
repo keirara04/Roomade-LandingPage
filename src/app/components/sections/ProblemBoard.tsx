@@ -1,21 +1,28 @@
 import RevealOnScroll from "../RevealOnScroll";
+import ShapeScatter from "../ShapeScatter";
 
 export default function ProblemBoard() {
   return (
-    <section className="cork-tile--dark w-full px-6 py-20 text-center">
-      <div className="mx-auto w-full max-w-3xl">
+    <section className="ground-deep w-full px-6 py-24 text-center">
+      <ShapeScatter opacity={0.07} />
+      <div className="mx-auto w-full max-w-4xl">
         <RevealOnScroll>
-          <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-[0.25em] text-paper/95">
+          <p className="text-sm font-semibold tracking-wide text-cream-text">
             The problem
           </p>
-          <h2 className="mx-auto mt-3 max-w-xl font-[family-name:var(--font-marker)] text-3xl leading-tight text-paper sm:text-4xl">
-            The boiler guy&apos;s number is 400 messages up.
+          <h2 className="font-display mx-auto mt-3 max-w-3xl text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+            Your group chat is fine. It just{" "}
+            <span className="text-cream-text">can&apos;t remember</span>{" "}
+            anything.
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-base leading-7 text-paper/95">
-            Every flat has a group chat holding it together, until the thing
-            you actually need is buried under a meme, a &ldquo;who has the
-            spare key,&rdquo; and three days of silence. Nothing has a
-            status. Nothing resolves. It just scrolls.
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/90">
+            Someone mentions the boiler. Someone pays for the shopping. Three
+            days later it&apos;s scrolled past, and nobody knows what&apos;s
+            settled.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
+            Roomade keeps the chat; it&apos;s built in. It just stops being
+            the filing system.
           </p>
         </RevealOnScroll>
       </div>
