@@ -12,6 +12,16 @@ services:
     environment:
       - SUPABASE_URL=${SUPABASE_URL}
       - SUPABASE_PUBLISHABLE_KEY=${SUPABASE_PUBLISHABLE_KEY}
-    ports:
-      - "3000:3000"
+    # Not `ports:` — that binds the *host's* port 3000 directly, which is
+    # what broke this on Dokploy (host port already taken by whatever else
+    # is deployed on that VPS). Dokploy's Traefik reaches this service over
+    # the internal Docker network by container port, via the app's Domains
+    # tab, not a host bind. `expose` just documents the port to other
+    # containers on the same network; it doesn't publish anything.
+    #
+    # For local testing without Dokploy in the loop, publish a port on the
+    # `docker run`/`docker compose run` command line instead of baking one
+    # in here, e.g.: docker compose run --service-ports -p 3099:3000 roomade
+    expose:
+      - "3000"
     restart: unless-stopped
