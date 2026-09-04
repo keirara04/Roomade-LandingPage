@@ -33,7 +33,7 @@ const features = [
 
 export default function MoreFeatures() {
   return (
-    <section className="ground-deep w-full px-6 py-24">
+    <section className="ground-deep w-full px-6 py-14 sm:py-20">
       <ShapeScatter opacity={0.07} />
       <div className="mx-auto w-full max-w-6xl xl:max-w-7xl">
         <RevealOnScroll className="text-center">
@@ -46,7 +46,7 @@ export default function MoreFeatures() {
           </h2>
         </RevealOnScroll>
 
-        <div className="mt-16 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.25fr_0.75fr]">
+        <div className="mt-12 sm:mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.25fr_0.75fr]">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {features.map((feature, i) => (
               <RevealOnScroll key={feature.title} delay={`${i * 60}ms`}>

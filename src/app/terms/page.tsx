@@ -30,7 +30,7 @@ export default function TermsPage() {
 
         <H2>1. What this is</H2>
         <P>
-          This site is a pre-launch waitlist for Roomade, a native iOS app
+          This site is a pre-launch waitlist for Roomade, a native iOS and Android app
           for shared-flat coordination. It&apos;s operated by [Company Legal
           Name], [Registered Address] (&ldquo;Roomade,&rdquo; &ldquo;we,&rdquo;
           &ldquo;us&rdquo;). Malaysia and South Korea are both target

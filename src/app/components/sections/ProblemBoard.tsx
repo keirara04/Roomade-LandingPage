@@ -3,7 +3,7 @@ import ShapeScatter from "../ShapeScatter";
 
 export default function ProblemBoard() {
   return (
-    <section className="ground-deep w-full px-6 py-24 text-center">
+    <section className="ground-deep w-full px-6 py-14 sm:py-20 text-center">
       <ShapeScatter opacity={0.07} />
       <div className="mx-auto w-full max-w-4xl">
         <RevealOnScroll>

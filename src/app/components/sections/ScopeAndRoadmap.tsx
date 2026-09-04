@@ -4,8 +4,8 @@ import ShapeScatter from "../ShapeScatter";
 
 const points = [
   {
-    label: "iPhone first",
-    body: "Roomade is a native iOS app. Android and web aren't built yet.",
+    label: "iPhone first, Android close behind",
+    body: "Roomade is native on both. iPhone leads and gets the first invites; Android is being built alongside it. Web isn't in scope.",
   },
   {
     label: "Early access, by invite",
@@ -23,7 +23,7 @@ const points = [
 
 export default function ScopeAndRoadmap() {
   return (
-    <section className="ground-deep w-full px-6 py-24">
+    <section className="ground-deep w-full px-6 py-14 sm:py-20">
       <ShapeScatter opacity={0.07} />
       <div className="mx-auto w-full max-w-5xl">
         <RevealOnScroll>

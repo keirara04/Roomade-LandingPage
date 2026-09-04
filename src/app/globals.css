@@ -56,13 +56,22 @@
 
 /* Anchor targets clear the fixed header. Without this the heading (or the
    hero waitlist panel, from the header's own "Join waitlist" CTA) a visitor
-   just clicked toward lands underneath the bar. */
+   just clicked toward lands underneath the bar.
+
+   --header-offset is measured and published by Header via a ResizeObserver,
+   because the header's height is not a constant: the announcement strip is
+   dismissible and the pill wraps differently across breakpoints. The value
+   here is only the pre-hydration fallback. */
+:root {
+  --header-offset: 7.5rem;
+}
+
 [id="board"],
 [id="money"],
 [id="chat"],
 [id="faq"],
 [id="hero-waitlist"] {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: calc(var(--header-offset) + 1rem);
 }
 
 html {
@@ -100,6 +109,19 @@ body {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.6) inset,
     0 8px 24px -12px rgba(20, 28, 25, 0.45);
+}
+
+/* Cap the reading measure of body copy inside cards.
+
+   Most of the two-column layouts on this page only split at lg, so through
+   the whole 768-1023px tablet band every panel is a single full-width column
+   and its paragraphs ran to about 91 characters. Comfortable is 45-75.
+   Capping here fixes every section at every width in one rule, instead of
+   pulling a dozen grids down to md and cramping the phone screenshots that
+   share those grids. Headings are left alone: short lines want the full
+   width. */
+.panel p {
+  max-width: 62ch;
 }
 
 /* Sunken grouped-list backdrop, matching iOS systemGroupedBackground behind

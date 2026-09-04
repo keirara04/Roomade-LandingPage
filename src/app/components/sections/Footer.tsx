@@ -16,15 +16,15 @@ export default function Footer() {
           Roomade &copy; {new Date().getFullYear()}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-5">
-          <Link href="/privacy" className="transition-colors hover:text-white">
+          <Link href="/privacy" className="py-1 transition-colors hover:text-white">
             Privacy
           </Link>
-          <Link href="/terms" className="transition-colors hover:text-white">
+          <Link href="/terms" className="py-1 transition-colors hover:text-white">
             Terms
           </Link>
           <a
             href="mailto:roomadeofficialmy@gmail.com"
-            className="transition-colors hover:text-white"
+            className="py-1 transition-colors hover:text-white"
           >
             roomadeofficialmy@gmail.com
           </a>

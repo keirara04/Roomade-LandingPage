@@ -22,7 +22,7 @@ const points = [
 
 export default function SettleUp() {
   return (
-    <section id="money" className="ground-deep w-full px-6 py-24">
+    <section id="money" className="ground-deep w-full px-6 py-14 sm:py-20">
       <ShapeScatter opacity={0.07} />
       <div className="mx-auto w-full max-w-6xl xl:max-w-7xl">
         <RevealOnScroll className="text-center">
@@ -35,7 +35,7 @@ export default function SettleUp() {
           </h2>
         </RevealOnScroll>
 
-        <div className="mt-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div className="mt-12 sm:mt-14 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <RevealOnScroll className="flex items-end justify-center gap-4">
             <PhoneFrame
               src={spendShot}

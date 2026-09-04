@@ -51,7 +51,7 @@ const jsonLd = {
   "@type": "SoftwareApplication",
   name: "Roomade",
   applicationCategory: "LifestyleApplication",
-  operatingSystem: "iOS",
+  operatingSystem: ["iOS", "Android"],
   description,
   url: SITE_URL,
   offers: {

@@ -8,7 +8,7 @@ import boardShot from "../../../../public/Board.png";
 
 export default function Hero() {
   return (
-    <section className="relative z-0 w-full px-6 pt-16 pb-24 sm:pt-24">
+    <section className="relative z-0 w-full px-6 pt-12 pb-20 sm:pt-16 sm:pb-24">
       <ShapeScatter opacity={0.18} />
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 xl:max-w-7xl lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
         <div className="text-center lg:text-left">
@@ -50,7 +50,7 @@ export default function Hero() {
                 Get early access
               </p>
               <p className="mt-1 mb-5 text-sm text-ink/70">
-                Roomade is on iPhone, in early access. Leave your email and
+                Roomade is on iPhone, with Android close behind. Leave your email and
                 we&apos;ll let you in.
               </p>
               <WaitlistForm />

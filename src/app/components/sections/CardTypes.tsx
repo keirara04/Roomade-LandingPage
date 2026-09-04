@@ -37,7 +37,7 @@ const types = [
 
 export default function CardTypes() {
   return (
-    <section id="board" className="w-full max-w-6xl px-6 py-24 xl:max-w-7xl">
+    <section id="board" className="w-full max-w-6xl px-6 py-14 sm:py-20 xl:max-w-7xl">
       <RevealOnScroll className="text-center">
         <p className="text-sm font-semibold tracking-wide text-cream-text">
           The board
@@ -52,7 +52,7 @@ export default function CardTypes() {
         </p>
       </RevealOnScroll>
 
-      <div className="mt-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+      <div className="mt-12 sm:mt-14 grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
         <RevealOnScroll className="flex justify-center">
           <PhoneFrame
             src={boardShot}

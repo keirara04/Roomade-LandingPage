@@ -17,7 +17,12 @@ import Marquee from "./components/Marquee";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col items-center overflow-x-hidden bg-teal pt-[4.5rem]">
+    <div
+      className="flex flex-1 flex-col items-center overflow-x-hidden bg-teal"
+      // Follows the header's measured height, so dismissing the announcement
+      // strip does not leave a gap the size of the strip at the top of the page.
+      style={{ paddingTop: "var(--header-offset)" }}
+    >
       <Header />
       <Hero />
       <Marquee />

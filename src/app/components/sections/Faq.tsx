@@ -10,8 +10,8 @@ const faqs = [
     a: "There's no fixed date yet. The waitlist gets the first invites.",
   },
   {
-    q: "Is it iPhone only?",
-    a: "For now, yes. It's a native iOS app. Android and web aren't in scope yet.",
+    q: "Is Android coming?",
+    a: "Yes. Android is in active development, with the same board, chat and settle up. iPhone is further along and gets the first invites; Android follows. Web isn't in scope.",
   },
   {
     q: "Does it actually move money?",
@@ -37,7 +37,7 @@ const faqs = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="w-full max-w-5xl px-6 py-24">
+    <section id="faq" className="w-full max-w-5xl px-6 py-14 sm:py-20">
       <RevealOnScroll className="text-center">
         <p className="text-sm font-semibold tracking-wide text-cream-text">FAQ</p>
         <h2 className="font-display mx-auto mt-3 text-3xl font-extrabold leading-tight text-white sm:text-4xl">
@@ -48,7 +48,7 @@ export default function Faq() {
       {/* Two independent columns rather than a CSS multi-column flow: each
           panel owns its own items, so opening one answer grows only that
           column instead of reflowing every question after it. */}
-      <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-start">
+      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:items-start">
         {[faqs.slice(0, Math.ceil(faqs.length / 2)), faqs.slice(Math.ceil(faqs.length / 2))].map(
           (column, col) => (
             <div key={col} className="panel divide-y divide-ink/10 text-ink">

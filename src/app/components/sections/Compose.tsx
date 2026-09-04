@@ -6,7 +6,7 @@ import headsUpShot from "../../../../public/Heads-UpCard.png";
 
 export default function Compose() {
   return (
-    <section className="w-full max-w-6xl px-6 py-24 xl:max-w-7xl">
+    <section className="w-full max-w-6xl px-6 py-14 sm:py-20 xl:max-w-7xl">
       <RevealOnScroll className="text-center">
         <p className="text-sm font-semibold tracking-wide text-cream-text">
           Posting
@@ -22,7 +22,7 @@ export default function Compose() {
         </p>
       </RevealOnScroll>
 
-      <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <div className="mt-12 sm:mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2">
         <RevealOnScroll className="flex flex-col items-center gap-7">
           <PhoneFrame
             src={issueShot}

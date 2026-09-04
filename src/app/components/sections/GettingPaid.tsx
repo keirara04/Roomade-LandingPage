@@ -21,7 +21,7 @@ const methods = [
 
 export default function GettingPaid() {
   return (
-    <section className="w-full max-w-6xl px-6 py-24 xl:max-w-7xl">
+    <section className="w-full max-w-6xl px-6 py-14 sm:py-20 xl:max-w-7xl">
       <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_0.85fr]">
         <div>
           <RevealOnScroll>
@@ -40,7 +40,7 @@ export default function GettingPaid() {
             </p>
           </RevealOnScroll>
 
-          <div className="mt-8 flex flex-col gap-4">
+          <div className="mt-8 grid gap-4 md:grid-cols-3 lg:grid-cols-1">
             {methods.map((method, i) => (
               <RevealOnScroll key={method.label} delay={`${i * 80}ms`}>
                 <Panel className="p-5 sm:p-6">

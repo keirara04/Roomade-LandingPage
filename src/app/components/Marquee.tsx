@@ -7,14 +7,12 @@ import { gsap, initMotion, ScrollTrigger } from "../lib/motion";
 // Fragments of the messages Roomade replaces. The point of the band is made
 // by the content, not by a sentence explaining it.
 const LINES = [
-  "bin day is Thursday",
-  "who bought the milk",
+  "Hottest take: the milk is gone",
+  "Cutest mascot ever",
   "RM 12.50 to Ezzy",
-  "guest staying Friday",
-  "the tap is still dripping",
-  "we're out of dish soap",
-  "paid, thanks",
-  "aircon service due",
+  "Trending app in the App Store",
+  "No more asking QR",
+  "Roomade",
 ];
 
 function Track() {

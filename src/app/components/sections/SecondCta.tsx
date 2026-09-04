@@ -6,7 +6,7 @@ import icon from "../../../../public/icon-512.png";
 
 export default function SecondCta() {
   return (
-    <section className="w-full max-w-5xl px-6 py-24">
+    <section className="w-full max-w-5xl px-6 py-20 sm:py-28">
       <RevealOnScroll className="mx-auto w-full max-w-2xl">
         <Panel className="p-8 text-center sm:p-10">
           <Image
