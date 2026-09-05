@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Does it actually move money?",
-    a: "No.Roomade never moves money. It works out who pays what, then hands you the QR, bank details, or payment link they saved; you send it in your own banking app. Any currency works, and a house can track several at once, though DuitNow and Malaysian bank details are the ones built out properly.",
+    a: "No. Roomade never moves money. It works out who pays what, then hands you the QR, bank details, or payment link they saved; you send it in your own banking app. Any currency works, and a house can track several at once, though DuitNow and Malaysian bank details are the ones built out properly.",
   },
   {
     q: "Why not just use WhatsApp, or Splitwise?",
