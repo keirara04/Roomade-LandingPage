@@ -25,7 +25,7 @@ const features = [
 
 export default function Chat() {
   return (
-    <section id="chat" className="ground-deep w-full px-6 py-14 sm:py-20">
+    <section className="ground-deep w-full px-6 py-14 sm:py-20">
       <ShapeScatter opacity={0.07} />
       <div className="mx-auto w-full max-w-6xl xl:max-w-7xl">
         <RevealOnScroll className="text-center">

@@ -20,11 +20,19 @@ export function initMotion() {
 
   // Trigger positions are computed from layout, and this page's layout is not
   // final at hydration: Inter Tight swaps in after first paint and changes
-  // every heading's height, and nine lazy screenshots change section heights
-  // as they arrive. Without these refreshes, triggers near the bottom of a
-  // 10,000px page are measured against stale positions.
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
-  window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+  // every heading's height, and the screenshots change section heights as they
+  // arrive. Without these refreshes, triggers near the bottom of a 10,000px
+  // page are measured against stale positions.
+  //
+  // Both pass `safe`. refresh() restores the saved scroll position, which
+  // cancels a smooth scroll that is mid-flight: click a nav link before the
+  // screenshots finish loading and the late refresh throws the visitor back to
+  // where they started. `safe` defers the refresh instead of firing during a
+  // scroll.
+  document.fonts?.ready.then(() => ScrollTrigger.refresh(true));
+  window.addEventListener("load", () => ScrollTrigger.refresh(true), {
+    once: true,
+  });
 }
 
 /** True when the visitor has asked for reduced motion. */

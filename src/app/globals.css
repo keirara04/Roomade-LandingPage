@@ -66,13 +66,18 @@
   --header-offset: 7.5rem;
 }
 
-[id="board"],
-[id="money"],
-[id="chat"],
 [id="faq"],
 [id="hero-waitlist"] {
   scroll-margin-top: calc(var(--header-offset) + 1rem);
 }
+
+/* The showcase markers are deliberately excluded from the rule above. They are
+   zero-height markers inside the pinned section's scroll track, and their
+   position IS the timeline position of their step. Any scroll-margin shifts
+   the landing earlier in the timeline and drops the visitor halfway through a
+   crossfade. Nothing needs to clear the header here: the pinned stage is a
+   full viewport with its content vertically centred, so the header floats over
+   empty space either way. */
 
 html {
   scroll-behavior: smooth;

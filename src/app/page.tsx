@@ -4,16 +4,14 @@ import CardTypes from "./components/sections/CardTypes";
 import SettleUp from "./components/sections/SettleUp";
 import GettingPaid from "./components/sections/GettingPaid";
 import Chat from "./components/sections/Chat";
-import Compose from "./components/sections/Compose";
-import MoreFeatures from "./components/sections/MoreFeatures";
 import HowItWorks from "./components/sections/HowItWorks";
-import ScopeAndRoadmap from "./components/sections/ScopeAndRoadmap";
 import SecondCta from "./components/sections/SecondCta";
 import Faq from "./components/sections/Faq";
 import Footer from "./components/sections/Footer";
 import StickyWaitlistBar from "./components/StickyWaitlistBar";
 import Header from "./components/Header";
 import Marquee from "./components/Marquee";
+import ProductShowcase from "./components/sections/ProductShowcase";
 
 export default function Home() {
   return (
@@ -26,15 +24,13 @@ export default function Home() {
       <Header />
       <Hero />
       <Marquee />
+      <ProductShowcase />
       <ProblemBoard />
       <CardTypes />
       <SettleUp />
       <GettingPaid />
       <Chat />
-      <Compose />
-      <MoreFeatures />
       <HowItWorks />
-      <ScopeAndRoadmap />
       <SecondCta />
       <Faq />
       <Footer />
