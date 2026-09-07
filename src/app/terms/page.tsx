@@ -31,8 +31,8 @@ export default function TermsPage() {
         <H2>1. What this is</H2>
         <P>
           This site is a pre-launch waitlist for Roomade, a native iOS and Android app
-          for shared-flat coordination. It&apos;s operated by [Company Legal
-          Name], [Registered Address] (&ldquo;Roomade,&rdquo; &ldquo;we,&rdquo;
+          for shared-flat coordination. It&apos;s operated by Hakeemi Ridza,
+          Jasin, Melaka (&ldquo;Roomade,&rdquo; &ldquo;we,&rdquo;
           &ldquo;us&rdquo;). Malaysia and South Korea are both target
           markets for early access, these terms apply the same way to
           signups from either. By submitting your email through the
@@ -145,7 +145,7 @@ export default function TermsPage() {
 
         <H2>12. Contact</H2>
         <P>
-          [Company Legal Name], [Registered Address].{" "}
+          Hakeemi Ridza, Jasin, Melaka.{" "}
           <a
             href="mailto:roomadeofficialmy@gmail.com"
             className="underline decoration-coral decoration-2 underline-offset-2"

@@ -33,7 +33,8 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="mt-1 text-xs text-ink/65">
-          Last updated August 27, 2026. Applies to this waitlist site only.
+          Last updated September 7, 2026. Applies to this waitlist site
+          only.
         </p>
 
         <P>
@@ -56,8 +57,8 @@ export default function PrivacyPage() {
 
         <H2>1. Who is responsible for your data</H2>
         <P>
-          The data controller for this site is [Company Legal Name],
-          [Registered Address], operating as &ldquo;Roomade.&rdquo; You can
+          The data controller for this site is Hakeemi Ridza,
+          Jasin, Melaka, operating as &ldquo;Roomade.&rdquo; You can
           reach us at{" "}
           <a
             href="mailto:roomadeofficialmy@gmail.com"
@@ -89,7 +90,7 @@ export default function PrivacyPage() {
           early access. Under the PDPA, our basis is your consent, given by
           submitting the form. Under PIPA, the same applies: collection and
           use is based on your consent at the point of signup, and you can
-          withdraw it at any time (see Section 7). Server logs are kept
+          withdraw it at any time (see Section 8). Server logs are kept
           under our legitimate interest in keeping the site secure.
         </P>
 
@@ -113,17 +114,32 @@ export default function PrivacyPage() {
         <P>
           Because South Korea is one of our two target markets, this
           section applies to every signup from Korea, not just an
-          occasional edge case. When you submit this form from South
-          Korea, your email address is transferred to and stored on
-          servers located in Singapore, operated by our processor,
-          Supabase Inc. The purpose of this transfer is solely to store
-          your waitlist entry so we can email you about early access. The
-          only item transferred is your email address, and it&apos;s kept
-          for as long as described in Section 6. You have the right to
-          refuse this transfer; since it&apos;s the only way we can add you
-          to the waitlist, refusing means we won&apos;t be able to sign you
-          up, but you&apos;re free to check back on this page later
-          instead.
+          occasional edge case. As required by PIPA Article 28-8, here are
+          the specifics of the transfer:
+        </P>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>Recipient: Supabase Inc., our database processor</li>
+          <li>Country of storage: Singapore</li>
+          <li>Data transferred: your email address only</li>
+          <li>
+            Purpose: to store your waitlist entry so we can email you about
+            early access
+          </li>
+          <li>
+            Retention period abroad: for as long as described in Section 6,
+            or until the recipient&apos;s use ends, whichever is earlier
+          </li>
+          <li>
+            Method of transfer: encrypted transmission (HTTPS) to
+            Supabase&apos;s Singapore infrastructure at the moment you
+            submit the form
+          </li>
+        </ul>
+        <P>
+          You have the right to refuse this transfer. Since it&apos;s the
+          only way we can add you to the waitlist, refusing means we
+          won&apos;t be able to sign you up, but you&apos;re free to check
+          back on this page later instead.
         </P>
 
         <H2>6. How long we keep it</H2>
@@ -134,7 +150,26 @@ export default function PrivacyPage() {
           unconfirmed signups automatically.
         </P>
 
-        <H2>7. Your rights</H2>
+        <H2>7. If something goes wrong (data breach)</H2>
+        <P>
+          If we become aware of a personal data breach affecting your email
+          address:
+        </P>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>
+            Under the PDPA, we will notify the Personal Data Protection
+            Commissioner (Jabatan Perlindungan Data Peribadi) within 72
+            hours of becoming aware of a breach likely to cause significant
+            harm, and notify affected individuals within 7 days of that
+            Commissioner notification.
+          </li>
+          <li>
+            Under PIPA, we will notify the Personal Information Protection
+            Commission (PIPC) without delay where the breach requires it.
+          </li>
+        </ul>
+
+        <H2>8. Your rights</H2>
         <P>You can ask us, at any time, to:</P>
         <ul className="mt-2 list-disc space-y-1 pl-5">
           <li>confirm whether we hold your email and see a copy of it</li>
@@ -162,7 +197,7 @@ export default function PrivacyPage() {
           . We&apos;ll act on your request within 21 days.
         </P>
 
-        <H2>8. Security</H2>
+        <H2>9. Security</H2>
         <P>
           Your email is stored in a database with row-level security
           enabled: our public site can only insert new signups, it
@@ -170,14 +205,19 @@ export default function PrivacyPage() {
           site is encrypted in transit (HTTPS).
         </P>
 
-        <H2>9. Children&apos;s privacy</H2>
+        <H2>10. Children&apos;s privacy</H2>
         <P>
-          This waitlist isn&apos;t directed at children, and we don&apos;t
-          knowingly collect data from anyone under 14. If you believe a
-          child has signed up, contact us and we&apos;ll remove the entry.
+          This waitlist isn&apos;t directed at children. Under PIPA, we
+          don&apos;t knowingly collect personal information from anyone
+          under 14 without verified consent from a legal guardian. Under
+          Malaysia&apos;s general law of capacity, we don&apos;t knowingly
+          collect personal information from anyone under 18 without a
+          parent&apos;s or guardian&apos;s consent. If you believe a child
+          has signed up without the required consent, contact us and
+          we&apos;ll remove the entry.
         </P>
 
-        <H2>10. Complaints</H2>
+        <H2>11. Complaints</H2>
         <P>
           If you&apos;re unhappy with how we&apos;ve handled your data,
           please contact us first, we&apos;ll try to sort it out directly.
@@ -188,16 +228,16 @@ export default function PrivacyPage() {
           KISA&apos;s Privacy Call Center at 118.
         </P>
 
-        <H2>11. Changes to this policy</H2>
+        <H2>12. Changes to this policy</H2>
         <P>
           If this policy changes materially, we&apos;ll update the date at
           the top of this page. Since this is a waitlist and we hold very
           little data, we don&apos;t expect frequent changes.
         </P>
 
-        <H2>12. Contact</H2>
+        <H2>13. Contact</H2>
         <P>
-          [Company Legal Name], [Registered Address].{" "}
+          Hakeemi Ridza, Jasin, Melaka.{" "}
           <a
             href="mailto:roomadeofficialmy@gmail.com"
             className="underline decoration-coral decoration-2 underline-offset-2"
