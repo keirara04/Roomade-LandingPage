@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BackHomeLink from "../components/BackHomeLink";
 
 export const metadata: Metadata = {
   title: "App Privacy Policy | Roomade",
@@ -28,7 +29,9 @@ function P({ children }: { children: React.ReactNode }) {
 export default function AppPrivacyPage() {
   return (
     <div className="flex flex-1 justify-center bg-teal px-6 py-20">
-      <div className="panel w-full max-w-2xl p-8 text-sm leading-relaxed text-ink/85 sm:p-10">
+      <div className="w-full max-w-2xl">
+        <BackHomeLink />
+        <div className="panel p-8 text-sm leading-relaxed text-ink/85 sm:p-10">
         <h1 className="font-display text-4xl font-extrabold text-ink">
           Roomade App Privacy Policy
         </h1>
@@ -289,6 +292,7 @@ export default function AppPrivacyPage() {
             roomadeofficialmy@gmail.com
           </a>
         </P>
+        </div>
       </div>
     </div>
   );
